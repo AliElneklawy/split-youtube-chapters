@@ -3,8 +3,8 @@ import re
 
 
 
-input_video_path = '/home/elneklawy/Desktop/a.mp4'
-timestamps_file = '/home/elneklawy/Desktop/ts'
+input_video_path = input('Path to the video: ')
+timestamps_file = input('Path to the timestamps file: ')
 timestamps_scnds = []
 video_clip = VideoFileClip(input_video_path)
 
