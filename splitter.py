@@ -3,8 +3,8 @@ import re
 
 
 
-input_video_path = input('Path to the video: ')
-timestamps_file = input('Path to the timestamps file: ')
+input_video_path = '/home/elneklawy/Desktop/a.mp4'
+timestamps_file = '/home/elneklawy/Desktop/ts'
 timestamps_scnds = []
 video_clip = VideoFileClip(input_video_path)
 
@@ -20,15 +20,12 @@ lines = ''.join(lines)
 chapter_names = re.findall(str_pattern, lines, re.MULTILINE)
 ts = re.findall(ts_pattern, lines, re.MULTILINE)
 
-max_len = len(ts[-1].split(':'))
-if max_len == 2:
-    for i in range(len(ts)):
+#max_len = len(ts[-1].split(':'))
+for i in range(len(ts)):
         ts[i] = ts[i].strip()
         #ts[i] = '00:' * (max_len - len(ts[i].split(':'))) + ts[i]
-        ts[i] = '00:' + ts[i]
-else:
-    for i in range(len(ts)):
-        ts[i] = ts[i].strip()
+        if len(ts[-1].split(':')) == 2:
+            ts[i] = '00:' + ts[i]
 
 for i in range(len(ts)):
     splitted = ts[i].split(':')
