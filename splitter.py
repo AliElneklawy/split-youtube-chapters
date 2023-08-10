@@ -3,13 +3,13 @@ import re
 
 
 
-input_video_path = '/home/elneklawy/Desktop/a.mp4'
-timestamps_file = '/home/elneklawy/Desktop/ts'
+input_video_path = input('Path to the video file: ')
+timestamps_file = input('Path to the timestamps file: ')
 timestamps_scnds = []
 video_clip = VideoFileClip(input_video_path)
 
-str_pattern = r'^\d:\d\d\s*[-_!-*\s]*\s*(.*?)\s*(?=\d:\d\d\s*[-_!-*\s]*|$)'
-ts_pattern = r'^(\d:\d\d)\s*[-_!-*\s]*\s*.*$'
+#str_pattern = r'^\d:\d\d\s*[-_!-*\s]*\s*(.*?)\s*(?=\d:\d\d\s*[-_!-*\s]*|$)'
+#ts_pattern = r'^(\d:\d\d)\s*[-_!-*\s]*\s*.*$'
 
 
 with open(timestamps_file, 'r') as f:
@@ -17,8 +17,16 @@ with open(timestamps_file, 'r') as f:
 
 lines = ''.join(lines)
 
-chapter_names = re.findall(str_pattern, lines, re.MULTILINE)
-ts = re.findall(ts_pattern, lines, re.MULTILINE)
+pattern = r"(\d{2}:\d{2})\s*[-~:|#@>_^$+=]\s*(.+)"
+
+matches = re.findall(pattern, lines)
+
+timestamps, chapter_names = zip(*matches)
+
+ts = list(timestamps)
+chapter_names = list(chapter_names)
+
+
 
 #max_len = len(ts[-1].split(':'))
 for i in range(len(ts)):
