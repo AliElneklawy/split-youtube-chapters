@@ -18,4 +18,6 @@ An example of the timestamps file format:
     
     6:46 - How to Know if It's Working
 
+    1:01:23 - Remarks
+
 It will also work when there are whitespaces instead of hyphens (-).
