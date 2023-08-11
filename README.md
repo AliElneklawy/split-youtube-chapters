@@ -20,4 +20,4 @@ An example of the timestamps file format:
 
     1:01:23 - Remarks
 
-It will also work when there are whitespaces instead of hyphens (-).
+It will also work when chapter names and timestamps are separated with whitespaces instead of hyphens (-).
