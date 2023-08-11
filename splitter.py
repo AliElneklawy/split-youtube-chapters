@@ -17,7 +17,9 @@ with open(timestamps_file, 'r') as f:
 
 lines = ''.join(lines)
 
-pattern = r"(\d{2}:\d{2})\s*[-~:|#@>_^$+=]\s*(.+)"
+#pattern = r"(\d+:\d+(?::\d+)?)\s*[-~:|#@>_^$+=]\s*(.+)"
+
+pattern = r'(\d+:\d+(?::\d+)?)\s*[-~:|#@>_^$+=\s]*\s*(.+)'
 
 matches = re.findall(pattern, lines)
 
@@ -26,13 +28,11 @@ timestamps, chapter_names = zip(*matches)
 ts = list(timestamps)
 chapter_names = list(chapter_names)
 
-
-
 #max_len = len(ts[-1].split(':'))
 for i in range(len(ts)):
         ts[i] = ts[i].strip()
         #ts[i] = '00:' * (max_len - len(ts[i].split(':'))) + ts[i]
-        if len(ts[-1].split(':')) == 2:
+        if len(ts[i].split(':')) == 2:
             ts[i] = '00:' + ts[i]
 
 for i in range(len(ts)):
@@ -41,6 +41,12 @@ for i in range(len(ts)):
     total_scnds = hrs * 60 * 60 + mins * 60 + scnds
     timestamps_scnds.append(total_scnds)
 
+#print(ts)
+#print()
+#print(timestamps_scnds)
+#print()
+#print(chapter_names)
+#exit()
 
 for i, start in enumerate(timestamps_scnds):
     if i < len(timestamps_scnds) - 1:
