@@ -17,3 +17,5 @@ An example of the timestamps file format:
     5:57 - Hashtags
     
     6:46 - How to Know if It's Working
+
+It will also work when there are whitespaces instead of hypens (-).
