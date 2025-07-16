@@ -26,10 +26,12 @@ Clone the repository, navigate to the folder containing the `Dockerfile`, and ru
 
 ```bash
 docker build -t yourusername/split_youtube_chapters:v1.0 .
+```
 
 Replace yourusername and v1.0 with your preferred image name and tag.
 
-▶️ Run the Container
+
+## ▶️ Run the Container
 Place your video file and timestamps.txt inside an input folder on your local machine (e.g., D:/MyVideos/input). Then run the container with:
 
 ```bash
@@ -37,10 +39,11 @@ docker run -it ^
   -v "D:/MyVideos/input":/app/input ^
   -v "D:/MyVideos/output":/app/output ^
   yourusername/split_youtube_chapters:v1.0
-
+```
 Inside the container, provide the paths when prompted:
 
 ```bash
 Path to the video file: /app/input/your_video.mp4  
 Path to the timestamps file: /app/input/timestamps.txt
+```
 The split video clips will be saved in the local output folder you mounted (e.g., D:/MyVideos/output).
