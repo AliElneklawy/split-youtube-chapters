@@ -42,7 +42,8 @@ for i, start in enumerate(timestamps_scnds):
     if i < len(timestamps_scnds) - 1:
         end = timestamps_scnds[i + 1] 
         fname = f"{i+1}- {chapter_names[i]}.mp4"
-        output_path = os.path.join(os.path.dirname(input_video_path), fname)
+        # output_path = os.path.join(os.path.dirname(input_video_path), fname)
+        output_path = os.path.join('/app/output', fname)
 
         if not os.path.exists(output_path):
             sub_clib = video_clip.subclipped(start, end)
@@ -50,10 +51,11 @@ for i, start in enumerate(timestamps_scnds):
 
 end = timestamps_scnds[-1]
 fname = f"{len(timestamps_scnds)}- {chapter_names[-1]}.mp4"
-output_path = os.path.join(os.path.dirname(input_video_path), fname)
+# output_path = os.path.join(os.path.dirname(input_video_path), fname)
+output_path = os.path.join('/app/output', fname)
 if not os.path.exists(output_path):
     sub_clib = video_clip.subclipped(timestamps_scnds[-1])
     sub_clib.write_videofile(output_path, audio_codec='aac', fps=60)
 
 video_clip.reader.close()
-video_clip.audio.reader.close_proc()
+video_clip.audio.reader.close()
